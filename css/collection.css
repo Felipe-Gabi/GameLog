@@ -1,0 +1,539 @@
+/* ========================================
+   My Collection — Page Layout
+   ======================================== */
+
+main {
+    width: 100%;
+    flex: 1;
+}
+
+.collection-header,
+.game-collection,
+.game-list,
+.collection-backup-controls {
+    width: min(100% - 2rem, var(--content-width));
+    margin-inline: auto;
+    box-sizing: border-box;
+}
+
+
+/* ========================================
+   My Collection — Page Header
+   ======================================== */
+
+.collection-header {
+    padding: var(--spacing-2xl) 0;
+    text-align: center;
+}
+
+.collection-header h1 {
+    margin: 0 0 var(--spacing-md);
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.collection-header p {
+    max-width: 650px;
+    margin: 0 auto var(--spacing-xl);
+    color: var(--color-text-muted);
+    line-height: 1.7;
+}
+
+/* Add a Game link */
+
+.collection-header .primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: var(--spacing-sm) var(--spacing-xl);
+    box-sizing: border-box;
+
+    color: var(--color-text);
+    background-color: var(--color-green-dark);
+    border: 1px solid var(--color-green-dark);
+    border-radius: var(--border-radius);
+
+    font: inherit;
+    font-weight: 700;
+    text-decoration: none;
+
+    transition:
+        background-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.collection-header .primary-button:hover {
+    background-color: var(--color-green);
+    transform: translateY(-2px);
+}
+
+.collection-header .primary-button:focus-visible {
+    outline: 2px solid var(--color-green);
+    outline-offset: 3px;
+}
+
+
+/* ========================================
+   My Collection — Finished Games
+   ======================================== */
+
+.game-collection,
+.game-list {
+    padding-bottom: var(--spacing-2xl);
+}
+
+.game-collection h2 {
+    margin: 0 0 var(--spacing-xl);
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-h2);
+}
+
+/* Container rendered by Collection.tsx */
+
+.game-list {
+    display: block;
+    min-width: 0;
+}
+
+/* Grid rendered by Collection.tsx */
+
+.game-list .game-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+    gap: var(--spacing-lg);
+}
+
+/* Keep the title link consistent with the card design. */
+.game-list .game-name a {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.game-list .game-name a:hover {
+    color: var(--color-green);
+}
+
+.game-list .game-name a:focus-visible,
+.game-list .game-cover-link:focus-visible {
+    outline: 3px solid var(--color-green);
+    outline-offset: 3px;
+}
+
+/* Message shown when the collection is empty, loading or failed.
+   Add className="empty-collection" to those <p> elements in Collection.tsx. */
+
+.empty-collection {
+    margin: 0;
+    padding: var(--spacing-2xl) var(--spacing-lg);
+
+    color: var(--color-text-muted);
+    background-color: var(--color-surface);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--border-radius-large);
+
+    line-height: 1.7;
+    text-align: center;
+}
+
+
+/* ========================================
+   My Collection — Game Cards
+   ======================================== */
+
+.game-list .game-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: var(--spacing-md);
+
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-large);
+}
+
+/* Game cover */
+
+.game-list .game-cover {
+    display: block;
+    width: 100%;
+    max-height: 360px;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+
+    border-radius: var(--border-radius);
+}
+
+/* Game title */
+
+.game-list .game-name {
+    margin: var(--spacing-md) 0;
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-large);
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+/* Release date, publisher, genre and platforms */
+
+.game-list .game-card-details p {
+    margin: var(--spacing-xs) 0;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+
+/* ========================================
+   My Collection — Rating
+   ======================================== */
+
+.game-list .game-rating {
+    margin-top: var(--spacing-md);
+}
+
+/* "Your rating" label */
+
+.game-list .game-rating > label {
+    display: block;
+    margin: 0 0 var(--spacing-sm);
+    color: var(--color-text);
+    font-weight: 700;
+}
+
+/* Rating dropdown */
+
+.game-list .game-rating select {
+    display: block;
+    width: 100%;
+    min-height: 42px;
+    margin-bottom: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    box-sizing: border-box;
+
+    color: var(--color-text);
+    color-scheme: dark;
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+
+    font: inherit;
+    cursor: pointer;
+}
+
+.game-list .game-rating select:focus-visible {
+    outline: 2px solid var(--color-green);
+    outline-offset: 2px;
+}
+
+/* Ten rating stars */
+
+.game-list .rating-stars {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2px;
+}
+
+/* Individual star buttons */
+
+.game-list .rating-stars .rating-star {
+    min-width: 0;
+    min-height: 32px;
+    margin: 0;
+    padding: 0 2px;
+
+    color: var(--color-green);
+    background: transparent;
+    border: none;
+    border-radius: 3px;
+
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.game-list .rating-stars .rating-star:hover {
+    color: var(--color-text);
+    background: transparent;
+}
+
+.game-list .rating-stars .rating-star:focus-visible {
+    outline: 2px solid var(--color-green);
+    outline-offset: 1px;
+}
+
+/* Rating value (a <span> in the React version) */
+
+.game-list .game-rating .rating-value {
+    display: block;
+    margin: var(--spacing-sm) 0;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
+/* Clear rating button */
+
+.game-list .game-rating .clear-rating {
+    min-height: 32px;
+    margin: var(--spacing-xs) 0 0;
+    padding: var(--spacing-xs) var(--spacing-sm);
+
+    color: var(--color-text-muted);
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+
+    font: inherit;
+    font-size: var(--font-size-small);
+    cursor: pointer;
+}
+
+.game-list .game-rating .clear-rating:hover {
+    color: var(--color-text);
+    background-color: var(--color-background);
+}
+
+
+/* ========================================
+   My Collection — Completion Date
+   ======================================== */
+
+.game-list .game-completion-date {
+    margin-top: var(--spacing-md);
+}
+
+.game-list .game-completion-date label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+    font-weight: 700;
+}
+
+.game-list .game-completion-date input {
+    display: block;
+    width: 100%;
+    min-height: 42px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    box-sizing: border-box;
+
+    color: var(--color-text);
+    color-scheme: dark;
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+
+    font: inherit;
+}
+
+.game-list .game-completion-date input:focus-visible {
+    outline: 2px solid var(--color-green);
+    outline-offset: 2px;
+}
+
+
+/* ========================================
+   My Collection — Remove Button
+   ======================================== */
+
+.game-list .remove-from-collection {
+    width: 100%;
+    min-height: 42px;
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-sm) var(--spacing-md);
+
+    color: var(--color-text);
+    background-color: transparent;
+    border: 1px solid var(--color-green);
+    border-radius: var(--border-radius);
+
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+
+    transition:
+        background-color var(--transition-fast),
+        color var(--transition-fast);
+}
+
+.game-list .remove-from-collection:hover {
+    color: var(--color-text);
+    background-color: var(--color-green-dark);
+}
+
+.game-list .remove-from-collection:focus-visible {
+    outline: 2px solid var(--color-green);
+    outline-offset: 3px;
+}
+
+
+/* ========================================
+   My Collection — Backup Controls
+   ======================================== */
+
+.collection-backup-controls {
+    margin-bottom: var(--spacing-2xl);
+    padding: var(--spacing-xl);
+
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-large);
+}
+
+.collection-backup-controls h2 {
+    margin: 0 0 var(--spacing-md);
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-h2);
+}
+
+.collection-backup-controls > p {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+}
+
+.collection-backup-actions {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+/* Export button and Import label share the same button style */
+
+.collection-backup-actions button,
+.collection-backup-actions label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    box-sizing: border-box;
+
+    color: var(--color-text);
+    background-color: var(--color-green-dark);
+    border: 1px solid var(--color-green-dark);
+    border-radius: var(--border-radius);
+
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+
+    transition:
+        background-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.collection-backup-actions button:hover,
+.collection-backup-actions label:hover {
+    background-color: var(--color-green);
+    transform: translateY(-1px);
+}
+
+.collection-backup-actions button:focus-visible {
+    outline: 2px solid var(--color-green);
+    outline-offset: 3px;
+}
+
+/* Hide the native file input but keep it keyboard accessible.
+   The label (linked with htmlFor) acts as the visible button. */
+
+.collection-backup-actions input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+/* Show a focus ring on the label when the hidden input has keyboard focus */
+
+.collection-backup-actions:has(input[type="file"]:focus-visible) label {
+    outline: 2px solid var(--color-green);
+    outline-offset: 3px;
+}
+
+/* Import/export status message */
+
+#backup-status {
+    margin: var(--spacing-md) 0 0;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+    overflow-wrap: anywhere;
+}
+
+#backup-status:empty {
+    display: none;
+}
+
+
+/* ========================================
+   My Collection — Responsive Layout
+   ======================================== */
+
+@media (max-width: 900px) {
+    .game-list .game-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .collection-header {
+        padding: var(--spacing-xl) 0;
+    }
+
+    .game-collection h2,
+    .collection-backup-controls h2 {
+        font-size: var(--font-size-h3);
+    }
+
+    .game-list .game-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--spacing-md);
+    }
+
+    .collection-backup-controls {
+        padding: var(--spacing-md);
+    }
+
+    .collection-backup-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .collection-backup-actions button,
+    .collection-backup-actions label {
+        width: 100%;
+    }
+}
+
+
+/* ========================================
+   My Collection — Reduced Motion
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .collection-header .primary-button,
+    .collection-backup-actions button,
+    .collection-backup-actions label,
+    .game-list .remove-from-collection {
+        transition: none;
+    }
+
+    .collection-backup-actions button:hover,
+    .collection-backup-actions label:hover {
+        transform: none;
+    }
+}

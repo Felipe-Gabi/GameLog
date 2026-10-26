@@ -1,0 +1,451 @@
+
+/* ========================================
+   Available Games — Page Header
+   ======================================== */
+
+.available-games-page {
+    width: min(100% - 2rem, var(--content-width));
+    margin-inline: auto;
+    padding-bottom: var(--spacing-2xl);
+}
+
+.available-games-header {
+    padding: var(--spacing-2xl) 0;
+    text-align: center;
+}
+
+.available-games-header h1 {
+    margin-bottom: var(--spacing-md);
+    font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.available-games-header p {
+    max-width: 700px;
+    margin-inline: auto;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+}
+
+
+/* ========================================
+   Available Games — Browser Controls
+   ======================================== */
+
+.game-browser-controls {
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
+
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-large);
+}
+
+.game-browser-controls h2 {
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-h2);
+}
+
+.game-sort-controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.game-sort-controls label,
+.game-filter label {
+    font-weight: 700;
+}
+
+.game-sort-controls select,
+.game-filter select {
+    min-height: 42px;
+    max-width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+
+    color: var(--color-text);
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+
+    font: inherit;
+}
+
+.game-sort-controls select {
+    flex: 1;
+    min-width: 180px;
+}
+
+.game-sort-controls select:focus-visible,
+.game-filter select:focus-visible {
+    outline: 2px solid var(--color-green);
+    outline-offset: 2px;
+}
+
+/* Sort direction button */
+
+.sort-direction-button {
+    min-height: 42px;
+    padding: var(--spacing-sm) var(--spacing-md);
+
+    color: var(--color-text);
+    background-color: var(--color-green-dark);
+    border: 1px solid var(--color-green-dark);
+    border-radius: var(--border-radius);
+
+    font: inherit;
+    cursor: pointer;
+}
+
+.sort-direction-button:hover {
+    background-color: var(--color-green);
+}
+
+
+/* ========================================
+   Available Games — Filters
+   ======================================== */
+
+.game-filter-controls {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.game-filter-controls h3 {
+    grid-column: 1 / -1;
+    margin: 0;
+    font-size: var(--font-size-h3);
+}
+
+.game-filter {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    min-width: 0;
+}
+
+.game-filter select {
+    width: 100%;
+}
+
+/* Clear filters button */
+
+#clear-filters {
+    justify-self: start;
+    align-self: end;
+
+    min-height: 42px;
+    padding: var(--spacing-sm) var(--spacing-md);
+
+    color: var(--color-text);
+    background-color: transparent;
+    border: 1px solid var(--color-green);
+    border-radius: var(--border-radius);
+
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+
+    transition:
+        background-color var(--transition-fast),
+        opacity var(--transition-fast);
+}
+
+#clear-filters:hover:not(:disabled) {
+    background-color: var(--color-green-dark);
+}
+
+#clear-filters:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* Results count */
+
+.game-results-count {
+    margin: var(--spacing-xl) 0 0;
+    padding-top: var(--spacing-md);
+
+    color: var(--color-text-muted);
+    border-top: 1px solid var(--color-border);
+    font-size: var(--font-size-small);
+}
+
+
+/* ========================================
+   Available Games — Catalog
+   ======================================== */
+
+.available-games-list {
+    min-width: 0;
+}
+
+#games-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2xl);
+}
+
+/* Each series section */
+
+.game-series {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+/* Series title */
+
+.game-series-title {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: var(--font-size-h2);
+}
+
+/* Grid of games within a series */
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--spacing-lg);
+}
+
+
+/* ========================================
+   Available Games — Flip Cards
+   ======================================== */
+
+/* Complete game card */
+
+.game-card {
+    min-width: 0;
+}
+
+/*
+   The flip container holds only the image.
+   The game title stays outside this container.
+*/
+
+.game-card-flip {
+    aspect-ratio: 3 / 4;
+    perspective: 1000px;
+}
+
+/* Rotating element */
+
+.game-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    transform-style: preserve-3d;
+    transition: transform 600ms ease;
+}
+
+/* Flip on hover or keyboard focus */
+
+.game-card-flip:hover .game-card-inner,
+.game-card-flip:focus-within .game-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Front and back share the same dimensions */
+
+.game-card-front,
+.game-card-back {
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-large);
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* Front face: game cover */
+
+.game-card-front {
+    background-color: var(--color-surface);
+}
+
+.game-card-front a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.game-cover {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Back face: game information */
+
+.game-card-back {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+
+    padding: var(--spacing-md);
+    box-sizing: border-box;
+
+    color: var(--color-text);
+    background-color: var(--color-surface);
+
+    transform: rotateY(180deg);
+    overflow-y: auto;
+}
+
+/* Information text on the back */
+
+.game-card-back p {
+    margin: 0;
+
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+}
+
+/* Add to Collection button */
+
+.add-to-collection {
+    width: 100%;
+    min-height: 40px;
+
+    margin-top: auto;
+    padding: var(--spacing-sm);
+
+    color: var(--color-text);
+    background-color: var(--color-green-dark);
+
+    border: 1px solid var(--color-green-dark);
+    border-radius: var(--border-radius);
+
+    font: inherit;
+    font-size: var(--font-size-small);
+
+    cursor: pointer;
+
+    transition:
+        background-color var(--transition-fast),
+        opacity var(--transition-fast);
+}
+
+.add-to-collection:hover:not(:disabled) {
+    background-color: var(--color-green);
+}
+
+.add-to-collection:focus-visible {
+    outline: 2px solid var(--color-green);
+    outline-offset: 3px;
+}
+
+.add-to-collection:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+/* Game title: remains underneath the image */
+
+.game-name {
+    margin: var(--spacing-sm) 0 0;
+
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-base);
+
+    overflow-wrap: anywhere;
+}
+
+.game-name a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.game-name a:hover {
+    color: var(--color-green);
+}
+
+.game-name a:focus-visible {
+    outline: 2px solid var(--color-green);
+    outline-offset: 3px;
+}
+
+
+/* ========================================
+   Available Games — Responsive Grid
+   ======================================== */
+
+@media (max-width: 1000px) {
+    .game-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .game-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--spacing-md);
+    }
+}
+
+@media (max-width: 600px) {
+    .available-games-page {
+        width: calc(100% - 2rem);
+    }
+
+    .available-games-header {
+        padding: var(--spacing-xl) 0;
+    }
+
+    .game-browser-controls {
+        padding: var(--spacing-md);
+    }
+
+    .game-filter-controls {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .game-sort-controls {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .game-sort-controls select {
+        width: 100%;
+    }
+
+    #clear-filters {
+        justify-self: stretch;
+        width: 100%;
+    }
+}
+
+@media (max-width: 420px) {
+    .game-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+    .game-card-inner {
+        transition: none;
+    }
+
+    .game-name a,
+    .add-to-collection {
+        transition: none;
+    }
+}

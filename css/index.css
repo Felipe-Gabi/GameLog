@@ -1,0 +1,155 @@
+/* ========================================
+   Homepage — Hero Section
+   ======================================== */
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 65vh;
+    padding: var(--spacing-2xl) var(--spacing-lg);
+
+    text-align: center;
+    background-color: var(--color-background);
+}
+
+.hero-content {
+    width: min(100%, 800px);
+    margin-inline: auto;
+}
+
+.hero h1 {
+    margin-bottom: var(--spacing-lg);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.2;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: 0 auto var(--spacing-xl);
+
+    color: var(--color-text-muted);
+    font-size: var(--font-size-large);
+    line-height: 1.7;
+}
+
+
+/* ========================================
+   Homepage — Hero Actions
+   ======================================== */
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.primary-button,
+.secondary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 46px;
+    padding: var(--spacing-sm) var(--spacing-lg);
+
+    border: 2px solid transparent;
+    border-radius: var(--border-radius);
+
+    font: inherit;
+    font-weight: 700;
+    text-decoration: none;
+
+    cursor: pointer;
+    transition:
+        background-color var(--transition-fast),
+        color var(--transition-fast),
+        border-color var(--transition-fast);
+}
+
+.primary-button {
+    color: var(--color-text);
+    background-color: var(--color-green-dark);
+}
+
+.primary-button:hover {
+    background-color: var(--color-green);
+}
+
+.secondary-button {
+    color: var(--color-green);
+    background-color: transparent;
+    border-color: var(--color-green);
+}
+
+.secondary-button:hover {
+    color: var(--color-text);
+    background-color: var(--color-green-dark);
+}
+
+.primary-button:focus-visible,
+.secondary-button:focus-visible {
+    outline: 3px solid var(--color-text);
+    outline-offset: 3px;
+}
+
+
+/* ========================================
+   Homepage — About Section
+   ======================================== */
+
+.about {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    background-color: var(--color-surface);
+    text-align: center;
+}
+
+.about h2 {
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-h2);
+}
+
+.about p {
+    max-width: 750px;
+    margin: 0 auto;
+
+    color: var(--color-text-muted);
+    line-height: 1.8;
+}
+
+
+/* ========================================
+   Homepage — Responsive Adjustments
+   ======================================== */
+
+@media (max-width: 600px) {
+    .hero {
+        min-height: auto;
+        padding: var(--spacing-2xl) var(--spacing-md);
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: var(--font-size-base);
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .primary-button,
+    .secondary-button {
+        width: 100%;
+    }
+
+    .about {
+        padding: var(--spacing-xl) var(--spacing-md);
+    }
+}

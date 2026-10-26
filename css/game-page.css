@@ -1,0 +1,288 @@
+
+/* ========================================
+   GAME DETAILS PAGE
+======================================== */
+
+.game-detail-page {
+    width: min(100% - 2rem, 1100px);
+    margin: 0 auto;
+    padding: var(--spacing-xl) 0 var(--spacing-2xl);
+}
+
+/* ========================================
+   BREADCRUMB
+======================================== */
+
+.breadcrumb {
+    margin-bottom: var(--spacing-xl);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+}
+
+.breadcrumb span {
+    display: inline-block;
+    padding-left: var(--spacing-sm);
+    border-left: 3px solid var(--color-green);
+}
+
+/* ========================================
+   GAME DETAIL SECTION
+======================================== */
+
+.game-detail {
+    width: 100%;
+    min-width: 0;
+}
+
+/* Main layout: cover on the left, details on the right */
+
+.game-detail-content {
+    display: grid;
+    grid-template-columns: minmax(240px, 360px) minmax(0, 1fr);
+    align-items: start;
+    gap: var(--spacing-2xl);
+}
+
+/* Respect the HTML hidden attribute */
+
+[hidden] {
+    display: none !important;
+}
+
+/* ========================================
+   GAME COVER
+======================================== */
+
+.game-detail-cover {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-large);
+    background-color: var(--color-surface);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 25%);
+}
+
+.game-detail-cover img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+}
+
+/* ========================================
+   GAME INFORMATION
+======================================== */
+
+.game-detail-info {
+    min-width: 0;
+    padding-top: var(--spacing-sm);
+}
+
+.game-series {
+    margin: 0 0 var(--spacing-sm);
+    color: var(--color-green);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+#game-title {
+    margin: 0 0 var(--spacing-md);
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+}
+
+#game-release-date {
+    margin: 0 0 var(--spacing-xl);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-large);
+    line-height: 1.6;
+}
+
+/* ========================================
+   GAME METADATA
+======================================== */
+
+.game-metadata {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--spacing-md);
+    margin: 0 0 var(--spacing-xl);
+}
+
+.game-metadata > div {
+    min-width: 0;
+    padding: var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background-color: var(--color-surface);
+}
+
+.game-metadata dt {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-green);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+}
+
+.game-metadata dd {
+    margin: 0;
+    color: var(--color-text);
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+/* Let the platforms field use the full row */
+
+.game-metadata > div:last-child {
+    grid-column: 1 / -1;
+}
+
+/* ========================================
+   ADD TO COLLECTION BUTTON
+======================================== */
+
+#add-to-collection {
+    display: inline-block;
+    width: 100%;
+    min-height: 48px;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border: 1px solid var(--color-green);
+    border-radius: var(--border-radius);
+    background-color: var(--color-green);
+    color: var(--color-text);
+    font: inherit;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+#add-to-collection:hover {
+    border-color: var(--color-green-dark);
+    background-color: var(--color-green-dark);
+}
+
+#add-to-collection:active {
+    transform: scale(0.98);
+}
+
+#add-to-collection:focus-visible {
+    outline: 3px solid var(--color-text);
+    outline-offset: 3px;
+}
+
+#add-to-collection:disabled {
+    border-color: var(--color-border);
+    background-color: var(--color-surface);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ========================================
+   COLLECTION STATUS MESSAGE
+======================================== */
+
+#collection-message {
+    margin: var(--spacing-md) 0 0;
+    padding: var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    color: var(--color-text);
+    line-height: 1.5;
+}
+
+/* ========================================
+   LOADING AND GAME NOT FOUND
+======================================== */
+
+#game-loading {
+    padding: var(--spacing-2xl) var(--spacing-md);
+    color: var(--color-text-muted);
+    text-align: center;
+    line-height: 1.6;
+}
+
+#game-not-found {
+    padding: var(--spacing-2xl) var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-large);
+    background-color: var(--color-surface);
+    text-align: center;
+}
+
+#game-not-found h1 {
+    margin: 0 0 var(--spacing-md);
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-h2);
+}
+
+#game-not-found p {
+    margin: 0 0 var(--spacing-xl);
+    color: var(--color-text-muted);
+    line-height: 1.7;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
+@media (max-width: 700px) {
+    .game-detail-page {
+        padding-top: var(--spacing-lg);
+    }
+
+    .game-detail-content {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--spacing-xl);
+    }
+
+    .game-detail-cover {
+        width: min(100%, 320px);
+        margin: 0 auto;
+    }
+
+    .game-detail-info {
+        padding-top: 0;
+    }
+
+    #game-title {
+        font-size: var(--font-size-h2);
+    }
+}
+
+@media (max-width: 420px) {
+    .game-metadata {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .game-metadata > div:last-child {
+        grid-column: auto;
+    }
+
+    #game-not-found h1 {
+        font-size: 1.6rem;
+    }
+}
+
+/* ========================================
+   REDUCED MOTION ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    #add-to-collection {
+        transition: none;
+    }
+}
